@@ -1,20 +1,72 @@
-import React from "react"
-import { Link } from "gatsby"
+/** @jsx jsx */
+import { jsx, css } from "theme-ui"
+import { graphql } from "gatsby"
+import { SEO, Layout } from "../components"
+import { hasPrismicData, hasGatsbyData } from "../utils"
 
-import { Layout, SEO } from "../components"
-// import Image from "../components/image"
+export const query = graphql`
+  query HomePageQuery {
+    site {
+      siteMetadata {
+        ...SiteMetadata
+      }
+    }
+    prismic {
+      page(uid: "home", lang: "en-us") {
+        ...SinglePage
+      }
+      allPosts {
+        ...PostListItems
+      }
+    }
+  }
+`
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      {/* <Image /> */}
+function HomePageContainer({ data, ...props }) {
+  return (
+    <HomePageView
+      page={data.prismic.page}
+      posts={data.prismic.allPosts.edges}
+      {...props}
+    />
+  )
+}
+
+function HomePageView({ page, ...props }) {
+  const [title] = page.title || "No title"
+  const [description] = page.description || { text: "No description" }
+  return (
+    <div>
+      <h1>{title.text}</h1>
+      <p>{description.text}</p>
     </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+  )
+}
 
-export default IndexPage
+export default props => {
+  const [_, page] = hasPrismicData(props, "page")
+  const [, site] = hasGatsbyData(props, "site")
+  return (
+    <Layout>
+      <SEO {...getPageSEOProps(site, page)} />
+      <HomePageContainer {...props} data={props.data} />
+    </Layout>
+  )
+}
+
+function getPageSEOProps(site, page) {
+  const title = getPageTitle(site, page)
+  const { description, ogLanguage: lang, twitter } = site.siteMetadata
+  return {
+    description,
+    lang,
+    title,
+    twitter,
+  }
+}
+
+function getPageTitle(site, page) {
+  const { title: siteTitle } = site.siteMetadata
+  const [pageTitle] = page.title
+  return `${siteTitle} | ${pageTitle.text}`
+}

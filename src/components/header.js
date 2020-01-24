@@ -29,7 +29,7 @@ function filterHeaderNavigationPages(props) {
 }
 
 Header.defaultProps = {
-  noNav: ["Home"],
+  noNav: ["Hello"],
 }
 
 function ThemeToggler(props) {
