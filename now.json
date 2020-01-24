@@ -1,4 +1,7 @@
 {
+  "name": "edel.mn",
+  "version": 2,
+  "alias": ["edel.mn"],
   "build": {
     "env": {
       "PRISMIC_ACCESS_TOKEN": "@prismic_access_token"
