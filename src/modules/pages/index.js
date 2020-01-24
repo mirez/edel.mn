@@ -23,7 +23,7 @@ export const query = graphql`
 export default props => {
   const [hasPage, page] = hasPrismicData(props, "page")
   const [hasSite, site] = hasGatsbyData(props, "site")
-  if (isBrowser && !hasPage) {
+  if (isBrowser() && !hasPage) {
     const { navigate } = require("gatsby")
     navigate("/")
   } else if (!hasSite || !hasPage) {
