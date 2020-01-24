@@ -3,6 +3,7 @@ import { jsx } from "theme-ui"
 
 const GridStrategy = {
   default: DefaultCardGrid,
+  horizontal: HorizontalCardGrid,
 }
 
 export function CardGridFactory({ type, ...props }) {
@@ -16,4 +17,8 @@ CardGridFactory.defaultProps = {
 
 function DefaultCardGrid(props) {
   return <div sx={{ variant: "cards.grid.default" }}>{props.children}</div>
+}
+
+function HorizontalCardGrid(props) {
+  return <div sx={{ variant: "cards.grid.horizontal" }}>{props.children}</div>
 }

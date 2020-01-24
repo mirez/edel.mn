@@ -11,6 +11,19 @@ exports.getCardVariants = function getCardVariants() {
         display: "grid",
         gap: ["2em"],
       },
+      horizontal: {
+        py: 3,
+        display: "grid",
+        overflowX: "scroll",
+        overflowY: "hidden",
+        WebkitOverflowScrolling: "auto",
+        gridGap: "1rem",
+        gridAutoColumns: ["calc(100% - 2rem)", "calc(70% - 2rem)"],
+        gridAutoFlow: "column",
+        scrollSnapType: "x mandatory",
+        transition:
+          "box-shadow 400ms ease-in-out 0s, background-color 400ms ease-in-out 0s;",
+      },
     },
     medium: {
       overflow: "hidden",

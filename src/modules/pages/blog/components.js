@@ -10,12 +10,16 @@ import {
 
 export function BlogPostList(props) {
   return (
-    <CardGridFactory type="default">
+    <CardGridFactory type={props.cardGridType}>
       {props.posts.map(({ node }) => (
         <BlogPostListItem key={node._meta.id} {...node} />
       ))}
     </CardGridFactory>
   )
+}
+
+BlogPostList.defaultProps = {
+  cardGridType: "default",
 }
 
 export function BlogPostListItem(props) {
