@@ -2,7 +2,6 @@ const { getPrismicSourceConfig } = require("./prismic")
 const { getManifestConfig } = require("./manifest")
 
 exports.createPluginConfig = function createPluginConfig(config) {
-  console.log(config)
   return [
     `gatsby-plugin-theme-ui`,
     `gatsby-plugin-emotion`,
