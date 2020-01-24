@@ -51,3 +51,5 @@ function getSiteMetaTags(props) {
     },
   ].concat()
 }
+
+export default SEO

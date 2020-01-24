@@ -1,4 +1,5 @@
 require("dotenv").config({ path: ".env" })
+const { nordLight } = require("../theme")
 
 const SITE_ANALYTICS_GOOGLE = "UA-150995153-1"
 const SITE_AUTHOR = "Michael Edelman"
@@ -6,8 +7,8 @@ const SITE_AUTHOR_FACEBOOK = ""
 const SITE_AUTHOR_GITHUB = "medelman17"
 const SITE_AUTHOR_TWITTER = "@edelman215"
 const SITE_BANNER = ""
-const SITE_COLOR_BACKGROUND = ""
-const SITE_COLOR_THEME = ""
+const SITE_COLOR_BACKGROUND = nordLight.background
+const SITE_COLOR_THEME = nordLight.accent
 const SITE_FAVICON = "static/icons/favicon.png"
 const SITE_DESCRIPTION = "Personal Website and Blog of Michael Edelman"
 const SITE_OG_LANG = "en-us"
