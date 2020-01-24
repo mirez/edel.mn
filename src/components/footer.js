@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 
-function Footer(props) {
+export function Footer(props) {
   return <div>© {new Date().getFullYear()}</div>
 }
 

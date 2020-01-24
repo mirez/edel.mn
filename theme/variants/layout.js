@@ -5,6 +5,7 @@ exports.getLayoutVariants = function getLayoutVariants({ maxWidth = "800px" }) {
       flexDirection: "column",
       minHeight: "100vh",
       px: [".75rem", ".75rem", "0"],
+      fontFamily: "body",
       bg: "background",
       transition:
         "box-shadow 400ms ease-in-out 0s, background-color 400ms ease-in-out 0s;",

@@ -3,6 +3,8 @@ import { jsx } from "theme-ui"
 import { StaticQuery, graphql } from "gatsby"
 import { GlobalCss } from "./global-styles"
 import { Header } from "./header"
+import { Main } from "./main"
+import { Footer } from "./footer"
 import { hasPrismicData } from "../utils"
 
 export function Layout(props) {
@@ -10,10 +12,11 @@ export function Layout(props) {
   const { title } = data.site.siteMetadata
   const [_, pages] = hasPrismicData(props, "allPages.edges")
   return (
-    <div>
+    <div sx={{ variant: "layout.container" }}>
       <GlobalCss />
       <Header siteTitle={title} pages={pages} />
-      {children}
+      <Main>{children}</Main>
+      <Footer />
     </div>
   )
 }
