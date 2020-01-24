@@ -7,6 +7,13 @@ const pages = [
     path: "/posts",
     component: require.resolve(cwd + "/src/modules/posts/index.js"),
   },
+  {
+    type: "Page",
+    match: "/:uid",
+    path: "/pages",
+    filter: data => data.node._meta.uid !== "home",
+    component: require.resolve(cwd + "/src/modules/pages/index.js"),
+  },
 ]
 
 exports.getPrismicSourceConfig = function getPrismicSourceConfig(config) {

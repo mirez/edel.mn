@@ -1,46 +1,45 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui"
 import { graphql } from "gatsby"
-import PostTemplate from "./template"
+import PageTemplate from "./template"
 import { Layout, SEO } from "./layout"
 
 import { isBrowser, hasPrismicData, hasGatsbyData } from "../../utils"
 
 export const query = graphql`
-  query BlogPostQuery($uid: String!) {
+  query PageQuery($uid: String!) {
     site {
       siteMetadata {
         ...SiteMetadata
       }
     }
     prismic {
-      post(uid: $uid, lang: "en-us") {
-        ...SinglePost
+      page(uid: $uid, lang: "en-us") {
+        ...SinglePage
       }
     }
   }
 `
-
 export default props => {
-  const [hasPost, post] = hasPrismicData(props, "post")
+  const [hasPage, page] = hasPrismicData(props, "page")
   const [hasSite, site] = hasGatsbyData(props, "site")
-  if (isBrowser && !hasPost) {
+  if (isBrowser && !hasPage) {
     const { navigate } = require("gatsby")
     navigate("/")
-  } else if (!hasSite || !hasPost) {
+  } else if (!hasSite || !hasPage) {
     return null
   } else {
     return (
       <Layout>
-        <SEO {...getPostSEOProps(site, post)} />
-        <PostTemplate post={post} site={site} />
+        <SEO {...getPageSEOProps(site, page)} />
+        <PageTemplate page={page} site={site} type={page._meta.uid} />
       </Layout>
     )
   }
 }
 
-function getPostSEOProps(site, post) {
-  const title = getPostTitle(site, post)
+function getPageSEOProps(site, page) {
+  const title = getPageTitle(site, page)
   const { description, ogLanguage: lang, twitter } = site.siteMetadata
   return {
     description,
@@ -50,8 +49,8 @@ function getPostSEOProps(site, post) {
   }
 }
 
-function getPostTitle(site, post) {
+function getPageTitle(site, page) {
   const { title: siteTitle } = site.siteMetadata
-  const [blogTitle] = post.title
-  return `${siteTitle} | ${blogTitle.text}`
+  const [pageTitle] = page.title
+  return `${siteTitle} | ${pageTitle.text}`
 }

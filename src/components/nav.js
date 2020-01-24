@@ -13,7 +13,11 @@ function getHeaderNavLinks(pages) {
   return pages.map(({ node }) => {
     const [title] = node.title
     const { uid } = node._meta
-    return <NavLink to={`/${uid}`}>{title.text}</NavLink>
+    return (
+      <NavLink key={uid} to={`/${uid}`}>
+        {title.text}
+      </NavLink>
+    )
   })
 }
 

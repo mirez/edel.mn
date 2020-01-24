@@ -9,7 +9,9 @@ export function Header(props) {
   return (
     <Flex as="header" sx={{ variant: "layout.header.outer" }}>
       <div sx={{ variant: "layout.header.inner" }}>
-        <NavLink>{props.siteTitle}</NavLink>
+        <NavLink to="/" variant="links.navigation">
+          {props.siteTitle}
+        </NavLink>
         <div sx={{ mx: "auto" }} />
         <HeaderNavigation pages={pages} />
         <ThemeToggler />
