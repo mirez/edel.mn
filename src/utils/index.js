@@ -1,2 +1,2 @@
 export * from "./isBrowser"
-export * from "./hasPrismic"
+export * from "./hasData"

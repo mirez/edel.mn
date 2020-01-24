@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 import PostTemplate from "./template"
 import { Layout, SEO } from "./layout"
 
-import { isBrowser, hasPrismicData } from "../../utils"
+import { isBrowser, hasPrismicData, hasGatsbyData } from "../../utils"
 
 export const query = graphql`
   query BlogPostQuery($uid: String!) {
@@ -23,7 +23,7 @@ export const query = graphql`
 
 export default props => {
   const [hasPost, post] = hasPrismicData(props, "post")
-  const [hasSite, site] = hasPrismicData(props, "site")
+  const [hasSite, site] = hasGatsbyData(props, "site")
   if (isBrowser && !hasPost) {
     const { navigate } = require("gatsby")
     navigate("/")

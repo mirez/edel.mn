@@ -39,9 +39,15 @@ exports.getLayoutVariants = function getLayoutVariants({ maxWidth = "800px" }) {
       navigation: {
         display: "flex",
         alignItems: "center",
-        flexGrow: 1,
+
         maxWidth,
         py: 4,
+      },
+      inner: {
+        display: "flex",
+        alignItems: "center",
+        width: "100%",
+        maxWidth,
       },
     },
     mainNav: {},

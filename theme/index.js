@@ -14,7 +14,7 @@ function createTheme(props) {
     fontWeights,
     space,
     colors,
-    variants,
+    ...variants,
   }
 }
 

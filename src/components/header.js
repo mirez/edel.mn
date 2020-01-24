@@ -5,23 +5,29 @@ import { HeaderNavigation } from "./nav"
 import { NavLink } from "./link"
 
 export function Header(props) {
-  console.log(props)
+  const pages = filterHeaderNavigationPages(props)
   return (
     <Flex as="header" sx={{ variant: "layout.header.outer" }}>
-      <div
-        sx={{
-          variant: "layout.header.navigation",
-          display: "flex",
-          flexGrow: 1,
-        }}
-      >
+      <div sx={{ variant: "layout.header.inner" }}>
         <NavLink>{props.siteTitle}</NavLink>
         <div sx={{ mx: "auto" }} />
-        <HeaderNavigation />
+        <HeaderNavigation pages={pages} />
         <ThemeToggler />
       </div>
     </Flex>
   )
+}
+
+function filterHeaderNavigationPages(props) {
+  return props.pages.filter(({ node }) => {
+    if (node.title === null) return false
+    const [title] = node.title
+    return !props.noNav.includes(title.text)
+  })
+}
+
+Header.defaultProps = {
+  noNav: ["Home"],
 }
 
 function ThemeToggler(props) {

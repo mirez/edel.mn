@@ -1,12 +1,13 @@
 exports.getMessyVariants = function getMessyVariants(props) {
   return {
     links: {
-      nav: {
+      navigation: {
         fontFamily: "body",
         lineHeight: "heading",
         fontWeight: "heading",
         fontSize: [2, 2],
         color: "text",
+        px: 2,
       },
       "list-item": {
         fontFamily: "body",
