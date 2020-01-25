@@ -11,7 +11,7 @@ import useDimensions from "react-use-dimensions"
 import "./prism/prism.css"
 
 export function PostView(props) {
-  const [ref, { width }] = useDimensions()
+  const [ref, { width }] = useDimensions({ liveMeasure: false })
   useEffect(() => {
     Prism.highlightAll()
   }, [])

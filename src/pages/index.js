@@ -37,11 +37,13 @@ function HomePageView({ page, posts, ...props }) {
   const [title] = page.title || "No title"
   const [description] = page.description || { text: "No description" }
   return (
-    <div>
-      <h1 sx={{ variant: "text.h1" }}>{title.text}</h1>
-      <p sx={{ variant: "text.lede" }}>{description.text}</p>
-      <div sx={{ variant: "page.section-divider" }} />
-      <div sx={{ variant: "page.section.container" }}>
+    <div sx={{ variant: "page.container" }}>
+      <div sx={{ variant: "page.hero" }}>
+        <h1 sx={{ variant: "page.heading.one" }}>{title.text}</h1>
+        <p sx={{ variant: "page.description" }}>{description.text}</p>
+      </div>
+
+      <div sx={{ variant: "page.body" }}>
         <h2 sx={{ variant: "text.h2" }}>From the Blog:</h2>
         <BlogPostList posts={posts} cardGridType="horizontal" />
       </div>

@@ -9,7 +9,7 @@ import { hasPrismicData } from "../utils"
 import useDimensions from "react-use-dimensions"
 
 export function Layout(props) {
-  const [ref, { width }] = useDimensions()
+  const [ref, { width }] = useDimensions({ liveMeasure: false })
   const { data, children } = props
   const { title } = data.site.siteMetadata
   const [_, pages] = hasPrismicData(props, "allPages.edges")
