@@ -6,6 +6,7 @@
   "author": "Michael Edelman <michael@fabulas.io>",
   "dependencies": {
     "@emotion/core": "^10.0.27",
+    "@emotion/styled": "^10.0.27",
     "@mdx-js/react": "^1.5.5",
     "@reach/skip-nav": "^0.7.3",
     "@theme-ui/components": "^0.3.1",
@@ -23,7 +24,7 @@
     "gatsby-plugin-sitemap": "^2.2.26",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-filesystem": "^2.1.40",
-    "gatsby-source-prismic-graphql": "^3.4.0-alpha.2",
+    "gatsby-source-prismic-graphql": "^3.4.0-beta.2",
     "gatsby-transformer-sharp": "^2.3.7",
     "lodash": "^4.17.15",
     "prismic-reactjs": "^1.2.0",
