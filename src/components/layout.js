@@ -6,15 +6,17 @@ import { Header } from "./header"
 import { Main } from "./main"
 import { Footer } from "./footer"
 import { hasPrismicData } from "../utils"
+import useDimensions from "react-use-dimensions"
 
 export function Layout(props) {
+  const [ref, { width }] = useDimensions()
   const { data, children } = props
   const { title } = data.site.siteMetadata
   const [_, pages] = hasPrismicData(props, "allPages.edges")
   return (
-    <div sx={{ variant: "layout.container" }}>
+    <div ref={ref} sx={{ variant: "layout.container" }}>
       <GlobalCss />
-      <Header siteTitle={title} pages={pages} />
+      <Header siteTitle={title} pages={pages} width={width} />
       <Main>{children}</Main>
       <Footer />
     </div>

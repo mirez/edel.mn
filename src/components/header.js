@@ -5,7 +5,8 @@ import { HeaderNavigation } from "./nav"
 import { NavLink } from "./link"
 
 export function Header(props) {
-  const pages = filterHeaderNavigationPages(props)
+  const noNav = props.width > 500 ? props.noNav : ["Hello", "Projects"]
+  const pages = filterHeaderNavigationPages({ ...props, noNav })
   return (
     <Flex as="header" sx={{ variant: "layout.header.outer" }}>
       <div sx={{ variant: "layout.header.inner" }}>

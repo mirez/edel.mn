@@ -12,7 +12,7 @@ export function BlogPageView({ posts, page, site }) {
         <p sx={{ variant: "page.description" }}>{description.text}</p>
       </div>
       <div sx={{ variant: "page.section-divider" }} />
-      <div sx={{ variant: "page.body" }}>
+      <div sx={{ variant: "page.body.default" }}>
         <BlogPostList posts={posts} />
       </div>
     </div>

@@ -8,7 +8,7 @@ export const query = graphql`
     blurb
     main_imageSharp {
       childImageSharp {
-        fluid(maxWidth: 800, maxHeight: 300) {
+        fluid(maxWidth: 800, maxHeight: 500) {
           ...GatsbyImageSharpFluid
         }
       }
@@ -47,6 +47,13 @@ export const query = graphql`
         primary {
           caption
           image
+          imageSharp {
+            childImageSharp {
+              fluid(maxWidth: 800, maxHeight: 500) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
       ... on PRISMIC_PostBodyCode {

@@ -5,13 +5,20 @@ exports.getTextVariants = function getTextVariants(colors) {
       fontFamily: "body",
       fontWeight: "body",
       lineHeight: "body",
-      my: 2,
+      fontSize: [1, 2],
+    },
+    lede: {
+      color: "text",
+      fontFamily: "body",
+      fontWeight: "body",
+      lineHeight: "body",
+      fontSize: [2, 2],
     },
     h1: {
       color: "text",
       fontFamily: "body",
       fontWeight: "heading",
-      lineHeight: "heading",
+      lineHeight: 1.2,
       fontSize: [4, 5],
     },
     h2: {

@@ -3,9 +3,9 @@ exports.getMessyVariants = function getMessyVariants(props) {
     links: {
       navigation: {
         fontFamily: "body",
-        lineHeight: "heading",
+        lineHeight: ["body", "heading"],
         fontWeight: "heading",
-        fontSize: [2, 2],
+        fontSize: [1, 2],
         color: "text",
         paddingRight: 3,
         "&:last-child": {
@@ -14,9 +14,9 @@ exports.getMessyVariants = function getMessyVariants(props) {
       },
       "list-item": {
         fontFamily: "body",
-        lineHeight: "heading",
+        lineHeight: ["body", "heading"],
         fontWeight: "heading",
-        fontSize: [3, 4],
+        fontSize: [2, 3],
         textDecoration: "none",
       },
       body: {

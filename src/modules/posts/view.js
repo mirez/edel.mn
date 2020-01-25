@@ -2,23 +2,41 @@
 import { jsx } from "theme-ui"
 import { useEffect } from "react"
 import { RichText } from "prismic-reactjs"
-import { EmbedFactory } from "../../components"
+import { EmbedFactory, ImageFactory } from "../../components"
 import { linkResolver } from "../../utils"
 import { htmlSerializer, getCodeSerializer } from "./serializers"
 import Prism from "prismjs"
+import useDimensions from "react-use-dimensions"
 
 import "./prism/prism.css"
 
 export function PostView(props) {
+  const [ref, { width }] = useDimensions()
   useEffect(() => {
     Prism.highlightAll()
   }, [])
 
   const body = props.post.body.map(transformSlice)
-
+  console.log(props)
   return (
-    <article>
-      <div>{body}</div>
+    <article ref={ref}>
+      <div
+        sx={{ variant: width > 500 ? "page.body.paper" : "page.body.mobile" }}
+      >
+        <ImageFactory
+          image={props.post.main_imageSharp.childImageSharp.fluid}
+        />
+        <h1 sx={{ variant: "text.h1", marginTop: 4, marginLeft: [0, 2] }}>
+          {props.post.title[0].text}
+        </h1>
+        <div
+          sx={{
+            variant: width > 500 ? "page.body.default" : "",
+          }}
+        >
+          {body}
+        </div>
+      </div>
     </article>
   )
 }
@@ -47,10 +65,23 @@ const sliceTransformStrategy = {
   },
   quote: () => {},
   default: () => {},
-  image_with_caption: () => {},
+  image_with_caption: ({ slice, index }) => {
+    return (
+      <ImageFactory
+        key={`s-${index}`}
+        image={slice.primary.imageSharp.childImageSharp.fluid}
+      />
+    )
+    console.log("image slice,", slice)
+  },
 }
 
 function transformSlice({ type, ...slice }, index) {
   // console.log(type)
-  return sliceTransformStrategy[type]({ slice, index })
+
+  return (
+    <div sx={{ variant: "slice.divider", my: 3 }}>
+      {sliceTransformStrategy[type]({ slice, index })}
+    </div>
+  )
 }

@@ -34,7 +34,7 @@ export function BlogPostListItem(props) {
         >
           {title.text}
         </Link>
-        <p>{props.blurb}</p>
+        <p sx={{ variant: "text.paragraph" }}>{props.blurb}</p>
       </div>
     </CardFactory>
   )

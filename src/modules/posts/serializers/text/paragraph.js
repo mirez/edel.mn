@@ -10,7 +10,7 @@ export function handlePrismicParagraph(
   index
 ) {
   return (
-    <Text as="p" sx={{ variant: "text.body.paragraph" }}>
+    <Text as="p" sx={{ variant: "text.paragraph", marginBottom: 1 }}>
       {children}
     </Text>
   )

@@ -16,7 +16,7 @@ function getHeadingType(type) {
 export function handlePrismicHeading(type, element, content, children, index) {
   const as = getHeadingType(type)
   return (
-    <Heading as={as} sx={{ variant: `text.body.${as}` }}>
+    <Heading as={as} sx={{ variant: `text.${as}` }}>
       {children}
     </Heading>
   )
